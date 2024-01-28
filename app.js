@@ -9,8 +9,8 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
-app.use('/items', itemRoutes);
-serverless(app)
+app.use('/.netlify/routes/items', itemRoutes);
+const handler = serverless(app);
 mongoose.connect('mongodb+srv://gauravbhatia172:QrZ1Yil7NfScJCqq@cluster0.4ataz95.mongodb.net', {
   useNewUrlParser: true,
   useUnifiedTopology: true
