@@ -4,7 +4,7 @@ const Item = require('../models/itemModel');
 exports.getSingleItems = async (req, res) => {
     try {
         const item = await Item.find({ slug: req.params.id });
-        return res.status(200).json(item);
+        return res.status(200).json(item[0]?.description ?? {message: "slug-not-found"});
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
