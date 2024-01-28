@@ -2,15 +2,14 @@ const express = require('express');
 const serverless = require('serverless-http');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const itemRoutes = require('./routes/itemRoutes');
+const itemRoutes = require('../routes/itemRoutes');
 
 const app = express();
 
 const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
-app.use('/.netlify/routes/items', itemRoutes);
-const handler = serverless(app);
+app.use('/.netlify/functions/app', itemRoutes);
 mongoose.connect('mongodb+srv://gauravbhatia172:QrZ1Yil7NfScJCqq@cluster0.4ataz95.mongodb.net', {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -21,3 +20,5 @@ mongoose.connect('mongodb+srv://gauravbhatia172:QrZ1Yil7NfScJCqq@cluster0.4ataz9
     console.log(`Server is running on port ${PORT}`);
   });
 }).catch(error => console.log(error.message));
+
+module.exports.handler = serverless(app);
