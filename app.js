@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use('/items', itemRoutes);
 
-mongoose.connect('mongodb://localhost:27017/mock-api', {
+mongoose.connect('mongodb+srv://gauravbhatia172:QrZ1Yil7NfScJCqq@cluster0.4ataz95.mongodb.net', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then((res) => {

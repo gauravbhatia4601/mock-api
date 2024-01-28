@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const itemController = require('../controllers/itemController');
 
+router.get('/health', itemController.health);
 router.get('/', itemController.getAllItems);
 router.get('/:id', itemController.getSingleItems);
 router.post('/', itemController.createItem);
